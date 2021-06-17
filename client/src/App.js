@@ -1,9 +1,16 @@
+import { useState } from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
+import ChatScreen from "./screens/ChatScreen";
+import LoginPage from "./screens/LoginPage";
 
 function App() {
+
+  const [id,setId] = useLocalStorage('key')
+
   return (
-    <div className="App">
-      Hello World
-    </div>
+    <>
+    {id ? <ChatScreen id={id}/> :<LoginPage onIdSubmit={setId}/>}
+    </>
   );
 }
 
